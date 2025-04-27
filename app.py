@@ -1,6 +1,7 @@
 from flask import Flask,request,render_template
 import numpy as np
 import pandas as pd
+from tabulate import tabulate
 
 from sklearn.preprocessing import StandardScaler
 
@@ -28,7 +29,7 @@ def predict_datapoint():
                         writing_score=request.form.get('writing_score'))
         
         df=data.get_data_as_dataframe()
-        print(df)
+        print(tabulate(df, headers='keys', tablefmt='fancy_grid', showindex=False))
 
         predict_pipeline=PredictPipeline()
         result=predict_pipeline.predict(df)

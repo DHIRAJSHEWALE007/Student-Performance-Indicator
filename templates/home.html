@@ -1,195 +1,232 @@
-<html>
-    <head>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Exam Performance Indicator</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(-45deg, #f39c12, #8e44ad, #2980b9, #1abc9c);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
-  .login {
-    width: 50%;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  h1 {
-    margin-top: 0;
-    text-align: center;
-  }
+    .login {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+      max-width: 750px;
+      width: 90%;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
 
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
+    .login:hover {
+      transform: scale(1.05);
+    }
 
-  form > * {
-    margin: 10px;
-  }
+    h1 {
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
 
-  .form-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
 
-  .form-control {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+    .mb-3 {
+      flex: 1 1 45%;
+      margin: 12px 0;
+    }
 
-  select.form-control {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
+    .form-label {
+      font-weight: 500;
+      color: #2c3e50;
+    }
 
-  .btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
+    .form-control {
+      border-radius: 10px;
+      font-size: 1rem;
+      padding: 12px;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
 
-  .btn:hover {
-    background-color: #3e8e41;
-  }
+    .form-control:focus {
+      border-color: #2980b9;
+      box-shadow: 0 0 8px rgba(41, 128, 185, 0.6);
+    }
 
-  .error {
-    color: red;
-    font-size: 14px;
-  }
+    .btn-primary {
+      background-color: #e74c3c;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
 
-  h2 {
-    text-align: center;
-    margin-top: 20px;
-  }
-</style>
+    .btn-primary:hover {
+      background-color: #c0392b;
+    }
 
-    </head>
+    h2 {
+      margin-top: 25px;
+      color: #16a085;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Floating abstract SVG shapes */
+    .svg-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .svg-bg svg {
+      position: absolute;
+      opacity: 0.12;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .svg-bg svg:nth-child(1) {
+      top: 10%;
+      left: 5%;
+      width: 250px;
+      animation-delay: 2s;
+    }
+
+    .svg-bg svg:nth-child(2) {
+      bottom: 10%;
+      right: 10%;
+      width: 200px;
+      animation-delay: 4s;
+    }
+
+    .svg-bg svg:nth-child(3) {
+      top: 30%;
+      right: 5%;
+      width: 180px;
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(25px); }
+    }
+  </style>
+</head>
+
 <body>
-    <div class="login">
-       <h1>Student Exam Performance Indicator</h1>
-       <form action="{{ url_for('predict_datapoint')}}" method="post">
-            <div class="mb-3">
-                <label class="form-label">Gender</label>
-                <select class="form-control" name="gender" placeholder="Enter you Gender" required>
-                    <option class="placeholder" selected disabled value="">Select your Gender</option>
-                    <option value="male">
-                        Male
-                    </option>
-                    <option value="female">
-                        Female
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Race or Ethnicity</label>
-                <select class="form-control" name="ethnicity" placeholder="Enter you ethnicity" required>
-                    <option class="placeholder" selected disabled value="">Select Ethnicity</option>
-                    <option value="group A">
-                        Group A
-                    </option>
-                    <option value="group B">
-                        Group B
-                    </option>
-                    <option value="group C">
-                        Group C
-                    </option>
-                    <option value="group D">
-                        Group D
-                    </option>
-                    <option value="group E">
-                        Group E
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Parental Level of Education</label>
-                <select class="form-control" name="parental_level_of_education"
-                    placeholder="Enter you Parent Education" required>
-                    <option class="placeholder" selected disabled value="">Select Parent Education</option>
-                    <option value="associate's degree">
-                        associate's degree
-                    </option>
-                    <option value="bachelor's degree">
-                        bachelor's degree
-                    </option>
-                    <option value="high school">
-                        high school
-                    </option>
-                    <option value="master's degree">
-                        master's degree
-                    </option>
-                    <option value="some college">
-                        some college
-                    </option>
-                    <option value="some high school">
-                        some high school
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Lunch Type</label>
-                <select class="form-control" name="lunch" placeholder="Enter you Lunch" required>
-                    <option class="placeholder" selected disabled value="">Select Lunch Type</option>
-                    <option value="free/reduced">
-                        free/reduced
-                    </option>
-                    <option value="standard">
-                        standard
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Test preparation Course</label>
-                <select class="form-control" name="test_preparation_course" placeholder="Enter you Course"
-                    required>
-                    <option class="placeholder" selected disabled value="">Select Test_course</option>
-                    <option value="none">
-                        None
-                    </option>
-                    <option value="completed">
-                        Completed
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Writing Score out of 100</label>
-                <input class="form-control" type="number" name="reading_score"
-                    placeholder="Enter your Reading score" min='0' max='100' />
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Reading Score out of 100</label>
-                <input class="form-control" type="number" name="writing_score"
-                    placeholder="Enter your Reading Score" min='0' max='100' />
-            </div>
-            <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required />
-            </div>
-        </form>
-    </div>
-    <h2>
-       The math score prediction is {{results}}
-    </h2>
-   <body>
+  <div class="svg-bg">
+    <!-- Floating Shape 1 -->
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f39c12" d="M42.5,-51.3C57.5,-44.4,74.1,-35.6,78.8,-21.6C83.6,-7.5,76.6,11.8,66.7,27.7C56.8,43.6,44.1,56,28.4,65.8C12.8,75.6,-6,82.8,-22.2,76.8C-38.4,70.7,-52,51.5,-59.3,32.3C-66.6,13.1,-67.6,-6.2,-60.7,-22.7C-53.9,-39.3,-39.2,-53.1,-22.9,-60.9C-6.7,-68.7,11.2,-70.5,27.6,-64.4C44.1,-58.3,59.2,-44.2,42.5,-51.3Z" transform="translate(100 100)" />
+    </svg>
+    <!-- Floating Shape 2 -->
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#2980b9" d="M49.3,-59.2C65.8,-46.5,81.6,-31.1,83.3,-14.5C85.1,2.1,72.9,19.9,61.5,36.4C50.2,52.9,39.6,68,24.4,75.7C9.2,83.3,-10.5,83.5,-25.9,75.7C-41.3,67.9,-52.5,52.1,-58.2,36.2C-63.9,20.3,-64.1,4.2,-61.2,-12.2C-58.2,-28.6,-52.1,-45.4,-40.7,-59.3C-29.3,-73.2,-14.7,-84.2,0.6,-84.9C15.9,-85.6,31.7,-76,49.3,-59.2Z" transform="translate(100 100)" />
+    </svg>
+    <!-- Floating Shape 3 -->
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#8e44ad" d="M50.4,-52.3C66.2,-43.5,79.2,-31.2,80.1,-17.3C81,2.7,69.8,23.4,58.1,36.7C46.4,50,34.1,56,22.2,60.6C10.4,65.2,-2.1,67.5,-14.5,64.7C-27,61.9,-39.3,54.1,-47.9,43.2C-56.5,32.3,-61.5,18.4,-60.6,4.5C-59.7,-9.5,-52.9,-22.9,-44.4,-35.1C-35.9,-47.3,-26.2,-58.4,-14.8,-60.9C-3.4,-63.3,9.1,-56,21.3,-49.1C33.5,-42.1,45.1,-35.4,50.4,-52.3Z" transform="translate(100 100)" />
+    </svg>
+  </div>
+
+  <div class="login">
+    <h1>Student Exam Performance Indicator</h1>
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+      <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <select class="form-control" name="gender" required>
+          <option selected disabled value="">Select your Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Race or Ethnicity</label>
+        <select class="form-control" name="ethnicity" required>
+          <option selected disabled value="">Select Ethnicity</option>
+          <option value="group A">Group A</option>
+          <option value="group B">Group B</option>
+          <option value="group C">Group C</option>
+          <option value="group D">Group D</option>
+          <option value="group E">Group E</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Parental Level of Education</label>
+        <select class="form-control" name="parental_level_of_education" required>
+          <option selected disabled value="">Select Parent Education</option>
+          <option value="associate's degree">associate's degree</option>
+          <option value="bachelor's degree">bachelor's degree</option>
+          <option value="high school">high school</option>
+          <option value="master's degree">master's degree</option>
+          <option value="some college">some college</option>
+          <option value="some high school">some high school</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Lunch Type</label>
+        <select class="form-control" name="lunch" required>
+          <option selected disabled value="">Select Lunch Type</option>
+          <option value="free/reduced">free/reduced</option>
+          <option value="standard">standard</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Test preparation Course</label>
+        <select class="form-control" name="test_preparation_course" required>
+          <option selected disabled value="">Select Test course</option>
+          <option value="none">None</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Writing Score out of 100</label>
+        <input class="form-control" type="number" name="reading_score" min='0' max='100' placeholder="Enter your Writing score" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Reading Score out of 100</label>
+        <input class="form-control" type="number" name="writing_score" min='0' max='100' placeholder="Enter your Reading Score" />
+      </div>
+      <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Predict your Maths Score" />
+      </div>
+      <h2>The math score prediction is {{ results }}</h2>
+    </form>
+  </div>
+</body>
 </html>
