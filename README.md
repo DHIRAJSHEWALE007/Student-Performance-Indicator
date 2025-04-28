@@ -12,10 +12,10 @@ This project predicts the math scores of students based on various features such
 Below are some screenshots of the frontend of the application:
 
 ### Screenshot 1
-![Screenshot 1](./screenshots/screenshot1.png)
+![Screenshot 2025-04-27 141540](https://github.com/user-attachments/assets/39a72c81-5be6-493b-85ca-ef00291d6ee0)
 
 ### Screenshot 2
-![Screenshot 2](./screenshots/screenshot2.png)
+![Screenshot 2025-04-27 141603](https://github.com/user-attachments/assets/5eedfdde-ff2a-443d-8d54-1f5895d3352c)
 
 ## Technologies Used
 - **Python**
