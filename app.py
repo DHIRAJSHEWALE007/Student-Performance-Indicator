@@ -7,9 +7,9 @@ from sklearn.preprocessing import StandardScaler
 
 from src.pipeline.predict_pipeline import CustomData,PredictPipeline
 
-application=Flask(__name__)
+app=Flask(__name__)
 
-app=application
+
 
 @app.route('/')
 def index():
@@ -37,4 +37,4 @@ def predict_datapoint():
         return render_template('home.html',results=result[0])
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
