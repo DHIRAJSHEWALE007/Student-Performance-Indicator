@@ -8,4 +8,4 @@ xgboost
 dill
 flask
 tabulate
-# -e .
+-e .
